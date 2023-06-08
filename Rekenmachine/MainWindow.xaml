@@ -1,0 +1,174 @@
+﻿<Window x:Class="Rekenmachine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rekenmachine"
+        mc:Ignorable="d"
+        Title="Rekenmachine" Height="450" Width="350">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <!-- Output -->
+            <RowDefinition Height="100" />
+            <!-- Nummers -->
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="83*" />
+            <ColumnDefinition Width="83*" />
+            <ColumnDefinition Width="83*" />
+            <ColumnDefinition Width="83*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            x:Name="OutputTextBlock"
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="4" 
+            Margin="5"
+            FontSize="50"
+            TextAlignment="Right" 
+            VerticalAlignment="Bottom"
+            Text="{Binding output}" />
+
+        <Button 
+            x:Name="SevenBtn" 
+            Content="7" 
+            Grid.Row="1" 
+            Grid.Column="0" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
+        <Button 
+            x:Name="EightBtn" 
+            Content="8" 
+            Grid.Row="1" 
+            Grid.Column="1"
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
+        <Button 
+            x:Name="NineBtn" 
+            Content="9" 
+            Grid.Row="1" 
+            Grid.Column="2" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click"/>
+
+        <Button 
+            x:Name="FourBtn" 
+            Content="4" 
+            Grid.Row="2" 
+            Grid.Column="0" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
+        <Button 
+            x:Name="FiveBtn" 
+            Content="5" 
+            Grid.Row="2"
+            Grid.Column="1"
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
+        <Button 
+            x:Name="SixBtn" 
+            Content="6" 
+            Grid.Row="2" 
+            Grid.Column="2" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
+        <Button 
+            x:Name="OneBtn" 
+            Content="1" 
+            Grid.Row="3" 
+            Grid.Column="0" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
+        <Button 
+            x:Name="TwoBtn" 
+            Content="2" 
+            Grid.Row="3"
+            Grid.Column="1"
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click"/>
+
+        <Button 
+            x:Name="ThreeBtn" 
+            Content="3" 
+            Grid.Row="3" 
+            Grid.Column="2" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
+        <Button 
+            x:Name="ZeroBtn" 
+            Content="0" 
+            Grid.Row="4"
+            Grid.Column="1"
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
+        <Button 
+            x:Name="PlusBtn" 
+            Content="+" 
+            Grid.Row="4" 
+            Grid.Column="3" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="PlusBtn_Click"/>
+
+        <Button 
+            x:Name="MinusBtn" 
+            Content="-" 
+            Grid.Row="3" 
+            Grid.Column="3" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="MinusBtn_Click" />
+
+        <Button 
+            x:Name="DivideBtn" 
+            Content="/" 
+            Grid.Row="1" 
+            Grid.Column="3" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="DivideBtn_Click"/>
+
+        <Button 
+            x:Name="TimesBtn" 
+            Content="X" 
+            Grid.Row="2" 
+            Grid.Column="3" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="TimesBtn_Click" />
+
+        <Button 
+            x:Name="EqualsBtn" 
+            Content="=" 
+            Grid.Row="4" 
+            Grid.Column="2" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="EqualsBtn_Click" />
+
+    </Grid>
+</Window>
