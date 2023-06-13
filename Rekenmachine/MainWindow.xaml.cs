@@ -4,9 +4,6 @@ using System.Windows;
 
 namespace Rekenmachine
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         double temp = 0;
@@ -81,25 +78,25 @@ namespace Rekenmachine
 
         private void MinusBtn_Click(object sender, RoutedEventArgs e)
         {
-            PrepareOperation("Minus");
+            PrepareOperation("Minus", "-");
         }
 
         private void TimesBtn_Click(object sender, RoutedEventArgs e)
         {
-            PrepareOperation("Times");
+            PrepareOperation("Times", "x");
         }
 
         private void DivideBtn_Click(object sender, RoutedEventArgs e)
         {
-            PrepareOperation("Divide");
+            PrepareOperation("Divide", "\u00F7");
         }
 
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
         {
-            PrepareOperation("Plus");
+            PrepareOperation("Plus", "+");
         }
 
-        private void PrepareOperation(string operationType)
+        private void PrepareOperation(string operationType, string operationSymbol)
         {
             if (output != "")
             {
@@ -109,6 +106,7 @@ namespace Rekenmachine
                     temp = currentInput;
                     output = "";
                     operation = operationType;
+                    OutputTextBlock.Text += operationSymbol;
                 }
             }
         }
