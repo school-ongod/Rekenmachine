@@ -170,5 +170,14 @@
             FontWeight="Bold" 
             Click="EqualsBtn_Click" />
 
+        <Button 
+            x:Name="CommaBtn" 
+            Content="." 
+            Grid.Row="4" 
+            Grid.Column="0" 
+            FontSize="25" 
+            FontWeight="Bold" 
+            Click="NumBtn_Click" />
+
     </Grid>
 </Window>

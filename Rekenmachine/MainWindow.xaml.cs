@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Globalization;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows;
 
 namespace Rekenmachine
 {
@@ -23,6 +12,7 @@ namespace Rekenmachine
         double temp = 0;
         string operation = "";
         string output = "";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,132 +28,124 @@ namespace Rekenmachine
             switch (name)
             {
                 case "OneBtn":
-                    output += "1";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("1");
                     break;
 
                 case "TwoBtn":
-                    output += "2";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("2");
                     break;
 
                 case "ThreeBtn":
-                    output += "3";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("3");
                     break;
 
                 case "FourBtn":
-                    output += "4";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("4");
                     break;
 
                 case "FiveBtn":
-                    output += "5";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("5");
                     break;
 
                 case "SixBtn":
-                    output += "6";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("6");
                     break;
 
                 case "SevenBtn":
-                    output += "7";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("7");
                     break;
 
                 case "EightBtn":
-                    output += "8";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("8");
                     break;
 
                 case "NineBtn":
-                    output += "9";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("9");
                     break;
 
                 case "ZeroBtn":
-                    output += "0";
-                    OutputTextBlock.Text = output;
+                    AppendToOutput("0");
+                    break;
+
+                case "CommaBtn":
+                    AppendToOutput(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
                     break;
             }
+        }
+
+        private void AppendToOutput(string value)
+        {
+            output += value;
+            OutputTextBlock.Text = output;
         }
 
         private void MinusBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (output != "")
-            {
-                temp = double.Parse(output);
-                output = "";
-                operation = "Minus";
-            }
+            PrepareOperation("Minus");
         }
 
         private void TimesBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (output != "")
-            {
-                temp = double.Parse(output);
-                output = "";
-                operation = "Times";
-            }
+            PrepareOperation("Times");
         }
 
         private void DivideBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (output != "")
-            {
-                temp = double.Parse(output);
-                output = "";
-                operation = "Divide";
-            }
+            PrepareOperation("Divide");
         }
 
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
         {
+            PrepareOperation("Plus");
+        }
+
+        private void PrepareOperation(string operationType)
+        {
             if (output != "")
             {
-                temp = double.Parse(output);
-                output = "";
-                operation = "Plus";
+                double currentInput;
+                if (double.TryParse(output, NumberStyles.Float, CultureInfo.CurrentCulture, out currentInput))
+                {
+                    temp = currentInput;
+                    output = "";
+                    operation = operationType;
+                }
             }
         }
 
         private void EqualsBtn_Click(object sender, RoutedEventArgs e)
         {
-            switch (operation)
+            if (output != "")
             {
-                case "Minus":
-                    double outputTemp = temp - double.Parse(output);
-                    output = outputTemp.ToString();
-                    OutputTextBlock.Text = output;
-                    output = "";
-                    temp = 0;
-                    break;
+                double currentInput;
+                if (double.TryParse(output, NumberStyles.Float, CultureInfo.CurrentCulture, out currentInput))
+                {
+                    double result = 0;
 
-                case "Times":
-                    double outputTemp2 = temp * double.Parse(output);
-                    output = outputTemp2.ToString();
-                    OutputTextBlock.Text = output;
-                    output = "";
-                    temp = 0;
-                    break;
+                    switch (operation)
+                    {
+                        case "Minus":
+                            result = temp - currentInput;
+                            break;
 
-                case "Divide":
-                    double outputTemp3 = temp / double.Parse(output);
-                    output = outputTemp3.ToString();
-                    OutputTextBlock.Text = output;
-                    output = "";
-                    temp = 0;
-                    break;
+                        case "Times":
+                            result = temp * currentInput;
+                            break;
 
-                case "Plus":
-                    double outputTemp4 = temp + double.Parse(output);
-                    output = outputTemp4.ToString();
+                        case "Divide":
+                            result = temp / currentInput;
+                            break;
+
+                        case "Plus":
+                            result = temp + currentInput;
+                            break;
+                    }
+
+                    output = result.ToString();
                     OutputTextBlock.Text = output;
                     output = "";
                     temp = 0;
-                    break;
+                }
             }
         }
     }
